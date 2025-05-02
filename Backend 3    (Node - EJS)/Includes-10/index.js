@@ -1,0 +1,51 @@
+// Includes: The method to create sub templates
+//  
+
+
+const express = require("express");
+const app = express();
+const Path = require("path");
+
+
+const port = 8080;
+
+app.use(express.static("public")); // ✅ serve static files
+app.set("view engine", "ejs");
+app.set("views", Path.join(__dirname, "/views"));
+
+app.get("/", (req, res) => {
+  res.render("home.ejs");
+});
+
+// This code for instagram
+
+app.get("/ig/:username", (req, res) => {  
+  let {username} = req.params;
+  const instaData = require("./data.json");
+  const data = instaData[username];
+  console.log(data);
+  if(data){
+    res.render("instagram.ejs", {data});
+  } else{
+    res.render("errors.ejs");
+
+  }
+
+
+ //   console.log(instaData);
+ // res.render("instagram.ejs", {data: instaData[username]});
+  
+});
+
+// instagram code end
+
+app.get("/home", (req, res) => {
+  let diceVal = Math.floor(Math.random() * 6) + 1;
+  //res.render("rolldice.ejs", {num: diceVal});
+  // we can pass also like this
+  res.render("home.ejs", { diceVal });
+});
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});

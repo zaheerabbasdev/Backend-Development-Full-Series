@@ -1,0 +1,35 @@
+<!-- (GET and POST Requests)
+
+What is GET Request: Used to GET some response.
+Data sent in query strings (limited, string data and visible in URL).
+
+
+What is POST Request: Used to POST something (For Create/Write/Update).
+Data sent via request body(any type of data).
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GET and POST Requests</title>
+  </head>
+  <body>
+    <h3>GET Request Form</h3>
+    <form method="get" action="http://localhost:8080/register">
+      <input placeholder="Enter username" name="user" type="text" />
+      <input placeholder="Enter Password" name="password" type="password" />
+      <button>Submit</button>
+    </form>
+
+    <hr />
+
+    <h3>POST Request Form</h3>
+    <form method="post" action="http://localhost:8080/register">
+      <input placeholder="Enter username" name="user" type="text" />
+      <input placeholder="Enter Password" name="password" type="password" />
+      <button>Submit</button>
+    </form>
+  </body>
+</html>
